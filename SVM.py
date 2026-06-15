@@ -26,7 +26,7 @@ def compute_multiclass_specificity(y_true, y_pred, labels):
 
 def cross_validation(svm, X, y, number_of_folds):
 
-    k_fold = KFold(n_splits=number_of_folds, shuffle=True, random_state=42)
+    k_fold = StratifiedKFold(n_splits=number_of_folds, shuffle=False, random_state=None)
     y_cv = cross_val_predict(svm, X, y, cv=k_fold, n_jobs=-1)
 
     target_names = np.unique(y).astype(str)
